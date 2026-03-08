@@ -8,4 +8,6 @@ class NewHero(BaseApiModel):
     suit_color: str
     has_cape: bool
     last_mission: datetime | None = None
+    is_retired: bool = False
+    
     powers: list[str]

@@ -11,5 +11,6 @@ class RetireHeroApi(BaseApi):
         hero_service = HeroService(session)
 
         hero_service.retire_hero(hero_id)
+        socketio_app.emit('retire', {'id': hero_id})
 
         return {"message": "Hero retired successfully!"}, status.HTTP_200_OK

@@ -18,7 +18,8 @@ class HeroService:
             name=hero_data.name,
             suit_color=hero_data.suit_color,
             has_cape=hero_data.has_cape,
-            last_mission=hero_data.last_mission
+            last_mission=hero_data.last_mission,
+            is_retired=hero_data.is_retired
         )
         self.session.add(hero)
         self.session.flush()
@@ -57,6 +58,9 @@ class HeroService:
             if power.name not in new_powers_set:
                 self.session.delete(power)
 
-    def update_hero_last_mission(self, hero_id: int, last_mission: datetime):
+    def update_hero_last_mission(self, hero_id: int, last_mission: datetime | str):
+        if isinstance(last_mission, str):
+            last_mission = datetime.fromisoformat(last_mission)
+
         hero = get_hero(hero_id)
         hero.last_mission = last_mission
