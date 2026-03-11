@@ -23,3 +23,8 @@ class HeroApi(BaseApi):
         HeroService(session).update_hero_last_mission(hero_id, data.get('lastMission'))
         session.commit()
         return {'message': 'Updated successfully'}, status.HTTP_200_OK
+
+    def delete(self, hero_id: int):
+        HeroService(session).delete_hero(hero_id)
+        session.commit()
+        return {'message': 'Hero deleted successfully'}, status.HTTP_200_OK
