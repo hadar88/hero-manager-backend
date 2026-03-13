@@ -1,4 +1,3 @@
-from flask_socketio import SocketIO
 from src.factory import create_app
 from src.socketio import socketio_app
 
