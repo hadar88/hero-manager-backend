@@ -66,5 +66,8 @@ class HeroService:
         hero.last_mission = last_mission
 
     def delete_hero(self, hero_id: int):
+        hero_powers = get_hero_powers(hero_id)
+        for power in hero_powers:
+            self.session.delete(power)
         hero = get_hero(hero_id)
         self.session.delete(hero)
