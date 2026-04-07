@@ -65,6 +65,14 @@ class HeroService:
         hero = get_hero(hero_id)
         hero.last_mission = last_mission
 
+    def update_hero_suit_color(self, hero_id: int, suit_color: str):
+        hero = get_hero(hero_id)
+        hero.suit_color = suit_color
+
+    def update_hero_has_cape(self, hero_id: int, has_cape: bool):
+        hero = get_hero(hero_id)
+        hero.has_cape = has_cape
+
     def delete_hero(self, hero_id: int):
         hero_powers = get_hero_powers(hero_id)
         for power in hero_powers:

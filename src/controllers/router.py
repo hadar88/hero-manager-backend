@@ -1,11 +1,13 @@
 from flask import Flask
 from flask_restful import Api
 
+from src.controllers.endpoints.index import IndexApi
 from src.controllers.endpoints.hero_api.hero import HeroApi
 from src.controllers.endpoints.hero_api.heroes import HeroesApi
-from src.controllers.endpoints.hero_api.retire_hero import RetireHeroApi
-from src.controllers.endpoints.index import IndexApi
 from src.controllers.endpoints.power_api.powers import PowersApi
+from src.controllers.endpoints.hero_api.retire_hero import RetireHeroApi
+from src.controllers.endpoints.hero_api.has_cape import ChangeHasCapeApi
+from src.controllers.endpoints.hero_api.suit_color import ChangeSuitColorApi
 
 
 def make_routes(app: Flask):
@@ -16,5 +18,7 @@ def make_routes(app: Flask):
     api.add_resource(HeroesApi, '/heroes')
     api.add_resource(HeroApi, '/heroes/<int:hero_id>')
     api.add_resource(RetireHeroApi, '/heroes/<int:hero_id>/retire')
+    api.add_resource(ChangeHasCapeApi, '/heroes/<int:hero_id>/has_cape')
+    api.add_resource(ChangeSuitColorApi, '/heroes/<int:hero_id>/suit_color')
 
     api.add_resource(PowersApi, '/heroes/<int:hero_id>/powers')
