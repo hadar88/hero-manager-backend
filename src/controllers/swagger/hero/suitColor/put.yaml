@@ -1,0 +1,24 @@
+tags:
+  - Hero
+summary: Change hero's suit color
+parameters:
+  - name: hero_id
+    in: path
+    required: true
+    type: integer
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        suitColor:
+          type: string
+responses:
+  200:
+    description: Suit color changed successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string

@@ -1,0 +1,13 @@
+tags:
+  - Index
+summary: Health check
+responses:
+  200:
+    description: Welcome message
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string

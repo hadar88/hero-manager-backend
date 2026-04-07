@@ -60,7 +60,7 @@ class HeroService:
 
     def update_hero_last_mission(self, hero_id: int, last_mission: datetime | str):
         if isinstance(last_mission, str):
-            last_mission = datetime.fromisoformat(last_mission)
+            last_mission = datetime.fromisoformat(last_mission.replace('Z', '+00:00'))
 
         hero = get_hero(hero_id)
         hero.last_mission = last_mission

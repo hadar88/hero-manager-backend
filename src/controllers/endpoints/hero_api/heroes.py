@@ -1,5 +1,6 @@
 from flask import request
 from flask_api import status
+from flasgger import swag_from
 
 from src.controllers.endpoints.hero_api.output_schemas import GetHeroOutputSchema
 from src.controllers.models.hero_filters import HeroFilters
@@ -10,7 +11,8 @@ from src.services.hero_service import HeroService
 
 
 class HeroesApi(BaseApi):
-    def get(self):
+    @swag_from('../../swagger/hero/heroes/get.yaml')
+    def get(self) -> tuple[list[GetHeroOutputSchema], int]:
         heroes = HeroService(session).get_heroes_by_filters(HeroFilters(**request.args))
         return [GetHeroOutputSchema(
             id=hero.id,
@@ -21,7 +23,8 @@ class HeroesApi(BaseApi):
             is_retired=hero.is_retired,
         ).model_dump() for hero in heroes], status.HTTP_200_OK
 
-    def post(self):
+    @swag_from('../../swagger/hero/heroes/post.yaml')
+    def post(self) -> tuple[dict[str, str], int]:
         hero = HeroService(session).create_hero(NewHero(**request.get_json()))
         session.commit()
         return {'message': 'Created hero successfully', 'id': hero.id}, status.HTTP_201_CREATED

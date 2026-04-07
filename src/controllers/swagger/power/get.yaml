@@ -1,0 +1,16 @@
+tags:
+  - Power
+summary: List all powers for a hero
+parameters:
+  - name: hero_id
+    in: path
+    required: true
+    type: integer
+    description: ID of the hero
+responses:
+  200:
+    description: A list of powers
+    schema:
+      type: array
+      items:
+        type: string

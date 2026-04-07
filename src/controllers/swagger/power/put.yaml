@@ -1,0 +1,26 @@
+tags:
+  - Power
+summary: Update hero's powers
+parameters:
+  - name: hero_id
+    in: path
+    required: true
+    type: integer
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        powers:
+          type: array
+          items:
+            type: string
+responses:
+  200:
+    description: Powers updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string

@@ -1,0 +1,16 @@
+tags:
+  - Hero
+summary: Retire a hero
+parameters:
+  - name: hero_id
+    in: path
+    required: true
+    type: integer
+responses:
+  200:
+    description: Hero retired successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string

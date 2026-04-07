@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from flasgger import Swagger
 
 from src.config import Config
 from src.controllers.router import make_routes
@@ -9,6 +10,7 @@ from src.database.database import Base, engine
 def create_app(config: Config = Config) -> Flask:
     app = Flask(__name__)
     CORS(app)
+    Swagger(app)
 
     app.config.from_object(config)
 

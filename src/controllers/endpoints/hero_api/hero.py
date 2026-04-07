@@ -1,5 +1,6 @@
 from flask import request
 from flask_api import status
+from flasgger import swag_from
 
 from src.controllers.endpoints.hero_api.output_schemas import GetHeroOutputSchema
 from src.controllers.utils.base_api import BaseApi
@@ -10,7 +11,8 @@ from src.services.hero_service import HeroService
 
 
 class HeroApi(BaseApi):
-    def get(self, hero_id: int):
+    @swag_from('../../swagger/hero/hero/get.yaml')
+    def get(self, hero_id: int) -> tuple[GetHeroOutputSchema, int]:
         hero: HeroModel = get_hero(hero_id)
 
         data = GetHeroOutputSchema(id=hero.id, name=hero.name, suit_color=hero.suit_color, has_cape=hero.has_cape,
@@ -18,12 +20,14 @@ class HeroApi(BaseApi):
 
         return data, status.HTTP_200_OK
 
+    @swag_from('../../swagger/hero/hero/put.yaml')
     def put(self, hero_id: int):
         data = request.get_json()
         HeroService(session).update_hero_last_mission(hero_id, data.get('lastMission'))
         session.commit()
         return {'message': 'Updated successfully'}, status.HTTP_200_OK
 
+    @swag_from('../../swagger/hero/hero/delete.yaml')
     def delete(self, hero_id: int):
         HeroService(session).delete_hero(hero_id)
         session.commit()

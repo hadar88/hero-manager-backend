@@ -1,0 +1,16 @@
+tags:
+  - Hero
+summary: Delete a hero
+parameters:
+  - name: hero_id
+    in: path
+    required: true
+    type: integer
+responses:
+  200:
+    description: Hero deleted successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string

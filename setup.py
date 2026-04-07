@@ -15,5 +15,6 @@ setup(
         "werkzeug==2.2.2",
         "flask-socketio==5.5.1",
         "flask-cors",
+        "flasgger",
     ],
 )

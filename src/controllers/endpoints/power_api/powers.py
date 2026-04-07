@@ -1,4 +1,5 @@
 from flask import request
+from flasgger import swag_from
 
 from src.database.database import session
 from flask_api import status
@@ -11,11 +12,13 @@ from src.services.hero_service import HeroService
 
 
 class PowersApi(BaseApi):
-    def get(self, hero_id: int):
+    @swag_from('../../swagger/power/get.yaml')
+    def get(self, hero_id: int) -> list[GetHeroPowerOutputSchema]:
         return [GetHeroPowerOutputSchema(id=power.id, name=power.name, hero_id=power.hero_id).model_dump()
                 for power in get_hero_powers(hero_id)], status.HTTP_200_OK
 
-    def put(self, hero_id: int):
+    @swag_from('../../swagger/power/put.yaml')
+    def put(self, hero_id: int) -> tuple[dict[str, str], int]:
         hero_service = HeroService(session)
 
         hero_powers = UpdateHeroPowers(**request.get_json(force=True))

@@ -1,0 +1,45 @@
+tags:
+  - Hero
+summary: Create a new hero
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/NewHero'
+responses:
+  201:
+    description: Hero created successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+        id:
+          type: integer
+definitions:
+  NewHero:
+    type: object
+    required:
+      - name
+      - suit_color
+      - has_cape
+      - powers
+      - last_mission
+      - powers
+    properties:
+      name:
+        type: string
+      suit_color:
+        type: string
+      has_cape:
+        type: boolean
+      last_mission:
+        type: string
+        format: date-time
+      is_retired:
+        type: boolean
+      powers:
+        type: array
+        items:
+          type: string

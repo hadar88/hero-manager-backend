@@ -1,0 +1,37 @@
+tags:
+  - Hero
+summary: List heroes by filters
+parameters:
+  - name: name
+    in: query
+    type: string
+  - name: suit_color
+    in: query
+    type: string
+  - name: has_cape
+    in: query
+    type: boolean
+responses:
+  200:
+    description: A list of heroes
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Hero'
+definitions:
+  Hero:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      suit_color:
+        type: string
+      has_cape:
+        type: boolean
+      last_mission:
+        type: string
+        format: date-time
+      is_retired:
+        type: boolean

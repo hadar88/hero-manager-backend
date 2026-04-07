@@ -1,0 +1,32 @@
+tags:
+  - Hero
+summary: Get hero details by ID
+parameters:
+  - name: hero_id
+    in: path
+    required: true
+    type: integer
+responses:
+  200:
+    description: Hero details
+    schema:
+      $ref: '#/definitions/Hero'
+  404:
+    description: Hero not found
+definitions:
+  Hero:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      suit_color:
+        type: string
+      has_cape:
+        type: boolean
+      last_mission:
+        type: string
+        format: date-time
+      is_retired:
+        type: boolean

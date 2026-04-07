@@ -1,0 +1,25 @@
+tags:
+  - Hero
+summary: Update hero's last mission date
+parameters:
+  - name: hero_id
+    in: path
+    required: true
+    type: integer
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        lastMission:
+          type: string
+          format: date-time
+responses:
+  200:
+    description: Update successful
+    schema:
+      type: object
+      properties:
+        message:
+          type: string

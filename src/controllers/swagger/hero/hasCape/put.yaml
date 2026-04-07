@@ -1,0 +1,24 @@
+tags:
+  - Hero
+summary: Change hero's cape status
+parameters:
+  - name: hero_id
+    in: path
+    required: true
+    type: integer
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        hasCape:
+          type: boolean
+responses:
+  200:
+    description: Status changed successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
