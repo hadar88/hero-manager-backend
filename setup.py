@@ -17,6 +17,7 @@ setup(
         "flask-cors",
         "flasgger",
         "gunicorn",
-        "eventlet",
+        "gevent",
+        "gevent-websocket",
     ],
 )

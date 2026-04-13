@@ -1,3 +1,3 @@
 # Hero Manager Backend
 
-### Run with: `gunicorn -w 1 -k eventlet run:app`
+### Run with: `gunicorn -k geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w 1 run:app`

@@ -1,3 +1,3 @@
 from flask_socketio import SocketIO
 
-socketio_app = SocketIO(cors_allowed_origins="*")
+socketio_app = SocketIO(cors_allowed_origins="*", async_mode='gevent')
